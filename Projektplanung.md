@@ -10,16 +10,16 @@ Team: Catharina Thomsen, Artjom Wagner
 
 ### Projektidee
 
-Wir betrachten einen Online-Shop mit schwankender Last – vom ruhigen Tag bis zur Lastspitze wie am Black Friday.
+Wir betrachten Anwendungen mit schwankender Last – vom ruhigen Betrieb bis zu einer plötzlichen Lastspitze.
 
-- Das **Shop-Frontend** bekommt bei vielen Besuchern mehr Pods, abhängig von der CPU-Last (**HPA**).
-- **Bestellungen** landen in einer Warteschlange und werden von Workern abgearbeitet. Die Anzahl der Worker richtet sich
+- Eine **einfache Webanwendung** bekommt bei vielen Anfragen mehr Pods, abhängig von der CPU-Last (**HPA**).
+- **Aufträge** landen in einer Warteschlange und werden von Workern abgearbeitet. Die Anzahl der Worker richtet sich
   nach der Länge der Warteschlange, bei leerer Warteschlange bis auf null (**KEDA**).
 - Der **VPA** empfiehlt, wie viel CPU und Arbeitsspeicher die Pods tatsächlich brauchen.
 
-Die Last erzeugen wir mit einem Lastgenerator (simulierte Kunden) bzw. einem Skript, das Bestellungen in die Warteschlange schreibt.
-Als Anwendungen planen wir die Online Boutique (Open-Source-Demo-Shop mit eingebautem Lastgenerator) und eine Redis-Liste mit
-Worker-Deployment. Passt der Shop nicht in unseren Laborcluster, weichen wir auf eine kleinere Beispielanwendung aus (z. B. php-apache).
+Die Last erzeugen wir mit einem Lastgenerator (Pod, der Anfragen an die Webanwendung schickt) bzw. einem Skript,
+das Aufträge in die Warteschlange schreibt. Als Anwendungen nutzen wir eine einfache Webanwendung (php-apache aus der
+Kubernetes-Dokumentation), die bei jeder Anfrage CPU-Last erzeugt, sowie eine Redis-Liste mit Worker-Deployment.
 
 Gemeinsames Ziel: Die Lösung lässt sich mit der README auf einem frischen Cluster installieren, und wir zeigen mit Lasttests
 und Diagrammen, wie schnell die Skalierung reagiert und wann sie an Grenzen stößt.
@@ -30,8 +30,8 @@ und Diagrammen, wie schnell die Skalierung reagiert und wann sie an Grenzen stö
 
 | Arbeitspaket | Ergebnis im Repository |
 |---|---|
-| metrics-server und Shop installieren | Installationsskripte und YAML-Dateien im Ordner `hpa/` |
-| HPA für das Shop-Frontend nach CPU-Auslastung | HPA-Konfiguration in `hpa/` |
+| metrics-server und Webanwendung installieren | Installationsskripte und YAML-Dateien im Ordner `hpa/` |
+| HPA für die Webanwendung nach CPU-Auslastung | HPA-Konfiguration in `hpa/` |
 | Lasttests mit unterschiedlicher Last, Messung von Hoch- und Herunterskalieren | Lasttest-Skript, Messdaten und Diagramme in `hpa/` |
 | Feinabstimmung des HPA (z. B. Stabilisierungsfenster) | Vergleichsmessung in `hpa/` |
 | VPA-Empfehlungen und Zusammenspiel von HPA und VPA | VPA-Konfiguration und Auswertung in `vpa/` |
@@ -61,8 +61,6 @@ So ist jeder Beitrag im Git einer Person zugeordnet und eigenständig prüfbar.
 | Dezember | Lasttests und Messungen, Feinabstimmung, VPA und Grenzen |
 | bis zur Präsentation | Installation auf frischem Cluster testen, Dokumentation, Präsentation |
 
-
 ### Feedback Ralf Lübben
 - An stelle des Onlineshops, kann man eine einfache Webanwendung nehmen, hier das Ganze möglichst einfach halten
-
-> Umsetzung: Wir verwenden statt der Online Boutique die einfache Webanwendung php-apache.
+- Umsetzung: Wir verwenden statt des Onlineshops die einfache Webanwendung php-apache.
