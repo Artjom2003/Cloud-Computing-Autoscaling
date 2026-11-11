@@ -64,3 +64,5 @@ So ist jeder Beitrag im Git einer Person zugeordnet und eigenständig prüfbar.
 
 ### Feedback Ralf Lübben
 - An stelle des Onlineshops, kann man eine einfache Webanwendung nehmen, hier das Ganze möglichst einfach halten
+
+> Umsetzung: Wir verwenden statt der Online Boutique die einfache Webanwendung php-apache.
