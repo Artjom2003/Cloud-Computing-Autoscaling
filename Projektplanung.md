@@ -58,5 +58,8 @@ So ist jeder Beitrag im Git einer Person zugeordnet und eigenständig prüfbar.
 | Zeitraum | Ziel |
 |---|---|
 | bis Ende November | Anwendungen und Autoscaler installiert, erste Skalierung funktioniert |
+
+### Feedback Ralf Lübben
+- An stelle des Onlineshops, kann man eine einfache Webanwendung nehmen, hier das Ganze möglichst einfach halten
 | Dezember | Lasttests und Messungen, Feinabstimmung, VPA und Grenzen |
 | bis zur Präsentation | Installation auf frischem Cluster testen, Dokumentation, Präsentation |
